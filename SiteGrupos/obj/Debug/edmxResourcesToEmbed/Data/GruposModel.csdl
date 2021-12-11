@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GruposModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Cities">
+    <Key>
+      <PropertyRef Name="Id_City" />
+    </Key>
+    <Property Name="Id_City" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="City_Code" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="City_Name" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+    <Property Name="City_Status" Type="Boolean" />
+  </EntityType>
+  <EntityContainer Name="ctx_grupos" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Cities" EntityType="Self.Cities" />
+    <EntitySet Name="Token" EntityType="GruposModel.Token" />
+    <EntitySet Name="ClaseFamilia" EntityType="GruposModel.ClaseFamilia" />
+    <EntitySet Name="Agency" EntityType="GruposModel.Agency" />
+    <EntitySet Name="Profile" EntityType="GruposModel.Profile" />
+    <EntitySet Name="Rol" EntityType="GruposModel.Rol" />
+    <EntitySet Name="RolProfile" EntityType="GruposModel.RolProfile" />
+  </EntityContainer>
+  <EntityType Name="Token">
+    <Key>
+      <PropertyRef Name="IdToken" />
+    </Key>
+    <Property Name="IdToken" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NumberToken" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ExpireDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Status" Type="Boolean" Nullable="false" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ClaseFamilia">
+    <Key>
+      <PropertyRef Name="IdClaseFamilia" />
+    </Key>
+    <Property Name="IdClaseFamilia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Clase" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Familia" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Activo" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="Agency">
+    <Key>
+      <PropertyRef Name="agencyId" />
+    </Key>
+    <Property Name="agencyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="documentType" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="agencyName" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="contactType" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="contactName" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="cityName" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="phoneNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="emailAddress" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="terminos" Type="Boolean" />
+    <Property Name="userName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="Boolean" />
+    <Property Name="dateCreate" Type="DateTime" Precision="3" />
+    <Property Name="IdProfile" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Profile">
+    <Key>
+      <PropertyRef Name="IdProfile" />
+    </Key>
+    <Property Name="IdProfile" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProfileName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Rol">
+    <Key>
+      <PropertyRef Name="IdRol" />
+    </Key>
+    <Property Name="IdRol" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RolName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="RolProfile">
+    <Key>
+      <PropertyRef Name="IdRolProfile" />
+    </Key>
+    <Property Name="IdRolProfile" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdRol" Type="Int32" Nullable="false" />
+    <Property Name="IdProfile" Type="Int32" Nullable="false" />
+  </EntityType>
+</Schema>

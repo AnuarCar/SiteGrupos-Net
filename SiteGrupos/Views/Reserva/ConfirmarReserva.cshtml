@@ -1,0 +1,382 @@
+﻿<link href="~/css/styleVuelos.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<link href="~/css/RespuestaService.css" rel="stylesheet" type="text/css" />
+<script src="~/Scripts/panel.js" type="text/javascript"></script>
+
+<header style="padding-top:0px;">
+    <div class="Container">
+        <div class="submenu col-12">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12 text-left">
+                    <p class="userAut"><strong>Bienvenido:</strong> @ViewBag.userName</p>
+                </div>
+
+                @foreach (var rol in ViewData["roles"] as IList<int>)
+                {
+                    if (rol == 1)
+                    {
+    <div class="col-4">
+        <button id="btnAdministrarUsuarios" class="ingresar adminUser btn" style="top:6px; right: 350px !important;">Administrar Usuarios</button>
+    </div>}
+
+}
+                <div class="salir col-6 ">
+                    <a class="cerrar" href='@Url.Action("cerrar", "vuelosyOtros")'>
+                        <i class="exit fa fa-sign-out"></i>
+                        Cerrar Sesión
+                    </a>
+                </div>
+
+                <div class="redes col-12" style="top: -15px;">
+                    <ul>
+                        <li><button class="btn_redes" onclick="window.open('https://www.facebook.com/gruposco-448478105889532/?ref=br_rs','_blank');" target="_blank"><img class="imgRedesFace" src="~/Images/Facebook1.png" /></button></li>
+                        <li><button class="btn_redes" onclick="window.open('https://www.instagram.com/grupos.co/','_blank');" target="_blank"><img class="imgRedes" src="~/Images/Instagram1.png" /></button></li>
+                        <li><button class="btn_redes" onclick="window.open('https://www.linkedin.com/company/grupos-co','_blank');" target="_blank"><img class="imgRedes" src="~/Images/Linkedin1.png" /></button></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="Containerlogo">
+            <div class="Containerlogo_img" style="width:280px">
+                <img src="~/Images/LogosloganM.png" alt="">
+            </div>
+
+            <div class="contactoTel">
+                <p>01 (800) 9520- 873</p>
+            </div>
+        </div>
+
+        <!-- Menu que se visualiza en versión mobile -->
+        <div class="menu_bar">
+            <a href="#" class="bt-menu">
+                <i class="fa fa-bars"></i>
+            </a>
+        </div>
+
+        <nav class="contactos">
+            <ul>
+                <li> <a href="tel:018007522303">Ventas 01 800 752 23 03</a></li>
+                <li> <a href="https://api.whatsapp.com/send?phone=573145723198text=Hola!%20Necesito%20información%20sobre%20un%20destino!" target="_blank">Whatsapp 314 572 31 98</a></li>
+                <li><a href="#"><span class="icon-earth"></span>Términos y Condiciones</a></li>
+                <li><a href="#"><span class="icon-earth"></span>Otros</a></li>
+                <li><a href='@Url.Action("Index", "Grupos")'><span class="icon-earth"></span>Cerrar Sesión</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<section id="reserva">
+    <div class="spinVuelos" id="spinnerVuelos" style="display:none">
+        <div class="preloaderVuelos"></div>
+    </div>
+    <div class="col-12" id="divReserva">
+        <div class="card">
+            <div class="row">
+                <div class="col-lg-6 pt-4" id="accordion">
+                    <h5 class="text-center pb-4">DILIGENCIE LOS FORMULARIOS</h5>
+                    <div class="card pb-3" style="padding-left: 10px; padding-right: 10px; padding-top: 10px;">
+                        <div class="card-header" id="headingOne">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Formulario Adultos
+                                </button>
+                            </h5>
+                        </div>
+
+                        @if (ViewBag.adt > 0)
+                        {
+            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="col-lg-12">
+                    <div class="text-center pt-4"><h4>Información de los viajeros</h4></div>
+
+                    @for (int i = 1; i <= ViewBag.adt; i++)
+                    {
+    <strong><p class="text-center pb-2 pt-4">Adulto @i:</p></strong>
+                        <div class="row pb-3 pt-2" style="border-bottom: solid 1px black">
+                            <div class="col-lg-6 col-sm-12">
+                                <label>Genero:</label>
+                                <select id="tituloAdt@(i)" class="form-control">
+                                    <option value="MR">Hombre</option>
+                                    <option value="MRS">Mujer</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-6 col-sm-12">
+                                <label>Primer Nombre:</label>
+                                <input type="text" id="txtPrimerNombreAdt@(i)" placeholder="Primer nombre..." title="Primer nombre" class="form-control">
+                            </div>
+                            <div class="col-lg-6 col-sm-12">
+                                <label>Segundo Nombre:</label>
+                                <input type="text" id="txtSegundoNombreAdt@(i)" placeholder="Segundo nombre..." title="Segundo nombre" class="form-control">
+                            </div>
+                            <div class="col-lg-6 col-sm-12">
+                                <label>Apellidos:</label>
+                                <input type="text" id="txtApellidosAdt@(i)" placeholder="Apellidos..." title="Apellidos" class="form-control">
+                            </div>
+                            <div class="col-lg-6 col-sm-12">
+                                <label>Documento Identidad:</label>
+                                <input type="text" id="txtDocumentoAdt@(i)" placeholder="Documento identidad..." title="Documento identidad" class="form-control">
+                            </div>
+                            <div class="col-lg-6 col-sm-12">
+                                <label>Teléfono:</label>
+                                <input type="number" id="txtTelefonoAdt@(i)" placeholder="Teléfono..." title="Teléfono" class="form-control">
+                            </div>
+                            <div class="col-lg-6 col-sm-12">
+                                <label>Correo:</label>
+                                <input type="email" id="txtCorreoAdt@(i)" placeholder="Correo..." title="Correo" class="form-control">
+                            </div>
+                        </div>}
+                </div>
+            </div>}
+                    </div>
+                    @if (ViewBag.chd > 0)
+                    {
+        <div class="card pb-4" style="padding-left: 10px; padding-right: 10px; padding-top: 10px;">
+            <div class="card-header" id="headingTwo">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Formulario Niños
+                    </button>
+                </h5>
+            </div>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+                    <div class="text-center pt-4"><h4>Información de los viajeros</h4></div>
+                    @for (int i = 1; i <= ViewBag.chd; i++)
+                    {
+    <strong><p class="text-center pb-2 pt-4">Niño @i:</p></strong>
+                        <div class="row pb-3 pt-2" style="border-bottom: solid 1px black">
+                            <div class="col-lg-6 col-sm-12">
+                                <label>Genero:</label>
+                                <select id="tituloChd@(i)" class="form-control">
+                                    <option value="MR">Hombre</option>
+                                    <option value="MRS">Mujer</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-6 col-sm-12">
+                                <label>Primer Nombre:</label>
+                                <input type="text" id="txtPrimerNombreChd@(i)" placeholder="Primer nombre..." title="Primer nombre" class="form-control">
+                            </div>
+                            <div class="col-lg-6 col-sm-12">
+                                <label>Segundo Nombre:</label>
+                                <input type="text" id="txtSegundoNombreChd@(i)" placeholder="Segundo nombre..." title="Segundo nombre" class="form-control">
+                            </div>
+                            <div class="col-lg-6 col-sm-12">
+                                <label>Apellidos:</label>
+                                <input type="text" id="txtApellidosChd@(i)" placeholder="Apellidos..." title="Apellidos" class="form-control">
+                            </div>
+                            <div class="col-lg-6 col-sm-12">
+                                <label>Documento Identidad:</label>
+                                <input type="text" id="txtDocumentoChd@(i)" placeholder="Documento identidad..." title="Documento identidad" class="form-control">
+                            </div>
+                            <div class="col-lg-6 col-sm-12">
+                                <label>Teléfono:</label>
+                                <input type="number" id="txtTelefonoChd@(i)" placeholder="Teléfono..." title="Teléfono" class="form-control">
+                            </div>
+                            <div class="col-lg-6 col-sm-12">
+                                <label>Correo:</label>
+                                <input type="email" id="txtCorreoChd@(i)" placeholder="Correo..." title="Correo" class="form-control">
+                            </div>
+                        </div>}
+                </div>
+            </div>
+        </div>}
+
+                    <div class="col-lg-12 col-sm-12 divBotonVuelos" style="display:block">
+                        <button id="btnConfirmarReserva" class="buscarVuelos btn">CONFIRMAR RESERVA</button>
+                    </div>
+
+                </div>
+                <div class="col-lg-6 col-sm-12 pt-5">
+                    <div class="row resumenMobile">
+                        <div class="col-lg-11 col-sm-6 mb-3" style="border: solid 1px black; margin-top:33px">
+                            <div class="text-center pt-2 pb-3"><h5>Resumen del Pago</h5></div>
+                            <div style="display:inline-flex; border-bottom: solid 1px black;  border-top: solid 1px black; border-left: solid 1px black; border-right: solid 1px black; width:100%">
+                                <p style="width: 50%; border-right: solid 1px black; padding-left:10px"><strong>Adultos:</strong></p>
+                                <span style=" width: 50%; text-align: right; padding-right: 10px;" id="numAdt">@ViewData["adt"]</span>
+                            </div>
+
+                            <div style="display:inline-flex; border-bottom: solid 1px black; border-left: solid 1px black; border-right: solid 1px black; width:100%">
+                                <p style="width: 50%; border-right: solid 1px black; padding-left:10px"><strong>Niños:</strong></p>
+                                <span style=" width: 50%; text-align: right; padding-right: 10px;" id="numChd">@ViewData["chd"]</span>
+                            </div>
+                            <div style="display:inline-flex; border-bottom: solid 1px black; border-left: solid 1px black; border-right: solid 1px black; width:100%">
+                                <p style="width: 50%; border-right: solid 1px black; padding-left:10px"><strong>Tarifa:</strong></p>
+                                <span style=" width: 50%; text-align: right; padding-right: 10px;">$ @ViewData["tarifaPlena"] COP</span>
+                            </div>
+
+                            <div style="display:inline-flex; border-bottom: solid 1px black; border-left: solid 1px black; border-right: solid 1px black; width:100%">
+                                <p style="width: 50%; border-right: solid 1px black; padding-left:10px"><strong>Impuestos y tasas:</strong></p>
+                                <span style=" width: 50%; text-align: right; padding-right: 10px;">$ @ViewData["impuesto"] COP</span>
+                            </div>
+
+                            <div style="display:inline-flex; width:100%; height: 60px; align-items: flex-end;">
+                                <strong style="width: 50%; padding-left:10px"><p>TOTAL:</p></strong>
+                                <strong style=" width: 50%; text-align: right; padding-right: 10px;"><span>$ @ViewData["tarifaTotal"] COP</span></strong>
+                            </div>
+
+                            <span style="display:none" id="fsi">@ViewData["fsi"]</span>
+                            <span style="display:none" id="fli">@ViewData["fli"]</span>
+                            <span style="display:none" id="nvi">@ViewData["nvi"]</span>
+                            <span style="display:none" id="ci">@ViewData["ci"]</span>
+                            <span style="display:none" id="fsr">@ViewData["fsr"]</span>
+                            <span style="display:none" id="flr">@ViewData["flr"]</span>
+                            <span style="display:none" id="nvr">@ViewData["nvr"]</span>
+                            <span style="display:none" id="cr">@ViewData["cr"]</span>
+                            <span style="display:none" id="codAerolinea">@ViewData["codAerolinea"]</span>
+                            <span style="display:none" id="origen">@ViewData["origen"]</span>
+                            <span style="display:none" id="destino">@ViewData["destino"]</span>
+
+                            <input id="tarifaPlena" style="display:none" value="@ViewData["tarifaPlenaNum"]" />
+                            <input id="impuesto" style="display:none" value="@ViewData["impuestoNum"]" />
+                            <input id="tarifaTotal" style="display:none" value="@ViewData["tarifaTotalNum"]" />
+
+                        </div>
+
+                        <div class="col-lg-11 col-sm-12 mb-3" style="border:solid 1px black">
+                            <div class="resumen">
+                                <div class="text-center pt-2 pb-3"><h5>Resumen de la Reserva</h5></div>
+                                <ul style="list-style:none; padding:0;">
+                                    <li style="border-top:solid 1px black; text-align:center"><p style="width:100%"><strong>DETALLE IDA</strong></p></li>
+                                    <li>
+                                        <div class="textosResumen"><strong>Origen: </strong>@ViewData["origentext"]</div>
+                                        <div class="textosResumen"><strong>Salida: </strong>@ViewData["fsi"]</div>
+                                    </li>
+                                    <li>
+                                        <div class="textosResumen"><strong>Destino: </strong>@ViewData["destinotext"]</div>
+                                        <div class="textosResumen"><strong>Llegada: </strong>@ViewData["fli"]</div>
+                                    </li>
+                                    <li>
+                                        <div class="textosResumen"><strong>Clase:</strong></div>
+                                        <div class="textosResumen">@ViewData["FamiliaIda"]</div>
+                                    </li>
+                                    <li>
+                                        <div class="textosResumen"><strong>Cabina:</strong></div>
+                                        <div class="textosResumen">@ViewData["cabina"]</div>
+                                    </li>
+                                    <li>
+                                        <div class="textosResumen"><strong>Accesorio Personal:</strong></div>
+                                        <div class="textosResumen">@ViewData["AccesorioIda"]</div>
+                                    </li>
+                                    <li>
+                                        <div class="textosResumen"><strong>Equipaje de Mano:</strong></div>
+                                        <div class="textosResumen">@ViewData["Equipaje_manoIda"]</div>
+                                    </li>
+                                    <li>
+                                        <div class="textosResumen"><strong>Equipaje de Bodega:</strong></div>
+                                        <div class="textosResumen">@ViewData["Equipaje_BodegaIda"]</div>
+                                    </li>
+                                    <li>
+                                        <div class="textosResumen"><strong>Abordaje Preferencial:</strong></div>
+                                        <div class="textosResumen">@ViewData["Abordaje_preferencialIda"]</div>
+                                    </li>
+                                    <li style="text-align:center"><p style="width:100%"><strong>DETALLE REGRESO</strong></p></li>
+                                    <li>
+                                        <div class="textosResumen"><strong>Origen: </strong>@ViewData["destinotext"]</div>
+                                        <div class="textosResumen"><strong>Salida: </strong>@ViewData["fsr"]</div>
+                                    </li>
+                                    <li>
+                                        <div class="textosResumen"><strong>Destino: </strong>@ViewData["origentext"]</div>
+                                        <div class="textosResumen"><strong>Llegada: </strong>@ViewData["flr"]</div>
+                                    </li>
+                                    <li>
+                                        <div class="textosResumen"><strong>Clase:</strong></div>
+                                        <div class="textosResumen">@ViewData["FamiliaRegreso"]</div>
+                                    </li>
+                                    <li>
+                                        <div class="textosResumen"><strong>Cabina:</strong></div>
+                                        <div class="textosResumen">@ViewData["cabina"]</div>
+                                    </li>
+                                    <li>
+                                        <div class="textosResumen"><strong>Accesorio Personal:</strong></div>
+                                        <div class="textosResumen">@ViewData["AccesorioRegreso"]</div>
+                                    </li>
+                                    <li>
+                                        <div class="textosResumen"><strong>Equipaje de Mano:</strong></div>
+                                        <div class="textosResumen">@ViewData["Equipaje_manoRegreso"]</div>
+                                    </li>
+                                    <li>
+                                        <div class="textosResumen"><strong>Equipaje de Bodega:</strong></div>
+                                        <div class="textosResumen">@ViewData["Equipaje_BodegaRegreso"]</div>
+                                    </li>
+                                    <li>
+                                        <div class="textosResumen"><strong>Abordaje Preferencial:</strong></div>
+                                        <div class="textosResumen">@ViewData["Abordaje_preferencialRegreso"]</div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="imgfooter col-12 mt-2 mb-2">
+                <img src="~/Images/Gruposlogan.svg" alt="" style="width:120px">
+            </div>
+            <div class="copy col-12">
+                <p>©Copyright ; grupos.co | Turismo Agencia de viajes.</p>
+            </div>
+
+            <div class="col-12">
+                <div class="row">
+                    <div class="listaLegal col-lg-4 col-sm-12">
+                        <ul>
+                            <li><a href="#" data-toggle="modal" data-target="#modalTerminos">Términos y condiciones</a></li>
+                            <li><a href="https://www.sic.gov.co/proteccion-del-consumidor" target="_blank">Protección al consumidor SIC</a></li>
+                            <li><a href="~/Documentos/Ley Retracto y  Desistimiento.pdf" target="_blank">Ley Retracto y/o Desistimiento</a></li>
+                            <li><a href="https://www.supertransporte.gov.co" target="_blank">Superintendencia de Puertos y Transporte</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="listaLegal col-lg-4 col-sm-12">
+                        <ul class="cajon2">
+                            <li class="listLegales"><a href="~/Documentos/RNT Grupos.co sas_2020.pdf" target="_blank">RNT</a></li>
+                            <li class="listLegales"><a href="http://www.aerocivil.gov.co/" target="_blank">Aerocivil</a></li>
+                            <li class="listLegales"><a href="~/Documentos/Politica de privacidad Grupos.co.pdf" target="_blank">Política de Privacidad</a></li>
+                            <li class="listLegales"><a href="~/Documentos/Protección a menores  Grupos.co.pdf" target="_blank">Protección a menores</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="listaLegal col-lg-4 col-sm-12">
+                        <ul>
+                            <li><p style="">Atención de PQRs - Operaciones@grupos.co</p></li>
+                            <li><a href="~/Documentos/Derechos del pasajero  y deberes del  transportador UAEAC.pdf" target="_blank">Derechos del pasajero y/o Deberes del trasnportador</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="infofooter text-center mb-3 mt-4 col-12">
+                <span>Grupos.co.S.A.S NIT. 901.278.022.4-Colombia, Teléfono: 01 8007522303.</span>
+                <br />
+                <span>Todos los derechos reservados. Registro Nacional de Turismo (RTN) No. 72012</span>
+            </div>
+
+            <div class="contacto col-lg-12">
+                <ul>
+                    <li>
+                        <span> Ventas 01 800 752 23 03</span>
+                        <img src="~/Images/Auriculares.png" alt="" class="auricular">
+                    </li>
+                    <li><a href="https://www.facebook.com/gruposco-448478105889532/?ref=br_rs" target="_blank"><img class="facebookfooter" src="~/images/Facebook bl.png" /></a></li>
+                    <li><a href="https://www.instagram.com/grupos.co/" target="_blank"><img class="instagram" src="~/images/Instagram bl.png" /></a></li>
+                    <li><a href="https://www.linkedin.com/company/grupos-co" target="_blank"><img class="linkedin" src="~/images/Linkedin bl.png" /></a></li>
+                    <li><img src="~/Images/Whatsapp_bl.png" alt="" class="whatsapp"></li>
+                </ul>
+
+            </div>
+
+            <div class="siguenos text-center col-12">
+                <span>
+                    En el desarrollo de lo dispuesto en el artículo 17 de la ley 679 de 2001, la agencia rechaza la explotación, la pornografía, el turismo sexual y demás formas de abuso sexual con menores, que son <br />
+                    sacionadas penal y administrativamente conforme a las leyes colombianas.
+                </span>
+            </div>
+        </div>
+    </div>
+</footer>

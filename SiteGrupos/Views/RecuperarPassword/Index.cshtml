@@ -1,0 +1,83 @@
+﻿<script src="~/Scripts/panel.js" type="text/javascript"></script>
+<link href="~/Content/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<link href="~/css/styleVuelos.css" rel="stylesheet" type="text/css" />
+<link href="~/css/recuperarContraseña.css" rel="stylesheet" type="text/css" />
+@{
+    ViewBag.Title = "Recuperar Contraseña | Grupos.co";
+}
+
+<header style="padding-top:0px;">
+    <div class="Container">
+        <div class="submenu col-12 row" style="padding-left:0; padding-right:0; margin-left:0">
+            <div class="col-lg-6 col-md-6 col-sm-12 text-left">
+
+            </div>
+            <div class="salir col-6 ">
+                <button id="btnVolverHome" class="ingresar adminUser btn" style="position:relative; left:0 !important; top:6px">Volver</button>
+            </div>
+            <div class="redes col-12">
+                <ul>
+                    <li><button class="btn_redes" onclick="window.open('https://www.facebook.com/gruposco-448478105889532/?ref=br_rs','_blank');" target="_blank"><img class="imgRedesFace" src="~/Images/Facebook1.png" /></button></li>
+                    <li><button class="btn_redes" onclick="window.open('https://www.instagram.com/grupos.co/','_blank');" target="_blank"><img class="imgRedes" src="~/Images/Instagram1.png" /></button></li>
+                    <li><button class="btn_redes" onclick="window.open('https://www.linkedin.com/company/grupos-co','_blank');" target="_blank"><img class="imgRedes" src="~/Images/Linkedin1.png" /></button></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="Containerlogo">
+            <div class="Containerlogo_img" style="width:280px">
+                <img src="~/Images/LogosloganM.png" alt="">
+            </div>
+            <div class="contactoTel">
+                <p>01 (800) 9520- 873</p>
+            </div>
+        </div>
+
+        <!-- Menu que se visualiza en versión mobile -->
+        <div class="menu_bar">
+            <a href="#" class="bt-menu">
+                <i class="fa fa-bars"></i>
+            </a>
+        </div>
+
+        <nav class="contactos">
+            <ul>
+                <li> <a href="tel:018007522303">Ventas 01 800 752 23 03</a></li>
+                <li> <a href="https://api.whatsapp.com/send?phone=573145723198text=Hola!%20Necesito%20información%20sobre%20un%20destino!" target="_blank">Whatsapp 314 572 31 98</a></li>
+                <li><a href="#"><span class="icon-earth"></span>Términos y Condiciones</a></li>
+                <li><a href="#"><span class="icon-earth"></span>Otros</a></li>
+                <li><a href='@Url.Action("Index", "Grupos")'><span class="icon-earth"></span>Volver</a></li>
+                <li><a href='@Url.Action("Index", "Grupos")'><span class="icon-earth"></span>Cerrar Sesión</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<div class="container">
+
+    <div class="spin" id="spinnerEnviarEmail" style="display:none">
+        <div class="preloaderEmail"></div>
+    </div>
+    <div class="cardRecup col-12 row" style="justify-content:center">
+        <div class="card mt-4" style="width: 20rem;">
+            <div class="text-center mt-4">
+                <img src="~/Images/Icono_grupos.png" alt="Grupos" style="width:60px" />
+            </div>
+            <h4 class="Titulo1 text-center pt-4 pb-3">Recuperar Contraseña <br /> Grupos.Co</h4>
+            <div class="modal-body" style="padding-bottom:10px;">
+                <div class="col-12 input-group mb-5 mt-3">
+                    <input id="correo" type="text" placeholder="Correo Electrónico Registrado" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" autocomplete="off">
+                </div>
+                <div class="col-12 text-center mb-4 mt-4">
+                    <button id="btnRecuperar" type="button" class="btn" style="background-color:#6101d1; color:white; cursor:pointer; width:50%">Recuperar</button>
+                </div>
+                <div class="input-group col-12"><span id="notificacionEmailOk" class="Ok" style="display:none"></span></div>
+                <div class="input-group col-12"><span id="notificacionEmailNOk" class="NOk" style="display:none"></span></div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+

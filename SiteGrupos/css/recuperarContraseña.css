@@ -1,0 +1,52 @@
+﻿body {
+}
+@font-face {
+    font-family: 'Poppins-Light';
+    src: url('../fonts/Poppins-Light.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: GilroyExtraBold;
+    src: url('../fonts/gilroyextrabold.otf') format('truetype');
+}
+
+@font-face {
+    font-family: GilroyBold;
+    src: url('../fonts/gilroybold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: GilroyExtraBold;
+    src: url('../fonts/gilroyextrabold.otf') format('truetype');
+}
+
+@font-face {
+    font-family: GilroyHeavy;
+    src: url('../fonts/gilroyheavy.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: GilroyLigth;
+    src: url('../fonts/gilroylight.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: GilroyMedium;
+    src: url('../fonts/gilroymedium.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: GilroyRegular;
+    src: url('../fonts/gilroyregular.ttf') format('truetype');
+}
+
+.Titulo1 {
+    font-family: GilroyRegular;
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+
+    .cardRecup {
+        margin-left: 0;
+    }
+}

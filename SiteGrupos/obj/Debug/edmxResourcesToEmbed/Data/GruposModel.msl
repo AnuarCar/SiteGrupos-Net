@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="GruposModelStoreContainer" CdmEntityContainer="ctx_grupos">
+    <EntitySetMapping Name="Cities">
+      <EntityTypeMapping TypeName="GruposModel.Cities">
+        <MappingFragment StoreEntitySet="Cities">
+          <ScalarProperty Name="Id_City" ColumnName="Id_City" />
+          <ScalarProperty Name="City_Code" ColumnName="City_Code" />
+          <ScalarProperty Name="City_Name" ColumnName="City_Name" />
+          <ScalarProperty Name="City_Status" ColumnName="City_Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Token">
+      <EntityTypeMapping TypeName="GruposModel.Token">
+        <MappingFragment StoreEntitySet="Token">
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="ExpireDate" ColumnName="ExpireDate" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="NumberToken" ColumnName="NumberToken" />
+          <ScalarProperty Name="IdToken" ColumnName="IdToken" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ClaseFamilia">
+      <EntityTypeMapping TypeName="GruposModel.ClaseFamilia">
+        <MappingFragment StoreEntitySet="ClaseFamilia">
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="Familia" ColumnName="Familia" />
+          <ScalarProperty Name="Clase" ColumnName="Clase" />
+          <ScalarProperty Name="IdClaseFamilia" ColumnName="IdClaseFamilia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Agency">
+      <EntityTypeMapping TypeName="GruposModel.Agency">
+        <MappingFragment StoreEntitySet="Agency">
+          <ScalarProperty Name="IdProfile" ColumnName="IdProfile" />
+          <ScalarProperty Name="dateCreate" ColumnName="dateCreate" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="userName" ColumnName="userName" />
+          <ScalarProperty Name="terminos" ColumnName="terminos" />
+          <ScalarProperty Name="emailAddress" ColumnName="emailAddress" />
+          <ScalarProperty Name="phoneNumber" ColumnName="phoneNumber" />
+          <ScalarProperty Name="cityName" ColumnName="cityName" />
+          <ScalarProperty Name="contactName" ColumnName="contactName" />
+          <ScalarProperty Name="contactType" ColumnName="contactType" />
+          <ScalarProperty Name="agencyName" ColumnName="agencyName" />
+          <ScalarProperty Name="documentType" ColumnName="documentType" />
+          <ScalarProperty Name="agencyId" ColumnName="agencyId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Profile">
+      <EntityTypeMapping TypeName="GruposModel.Profile">
+        <MappingFragment StoreEntitySet="Profile">
+          <ScalarProperty Name="ProfileName" ColumnName="ProfileName" />
+          <ScalarProperty Name="IdProfile" ColumnName="IdProfile" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rol">
+      <EntityTypeMapping TypeName="GruposModel.Rol">
+        <MappingFragment StoreEntitySet="Rol">
+          <ScalarProperty Name="RolName" ColumnName="RolName" />
+          <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RolProfile">
+      <EntityTypeMapping TypeName="GruposModel.RolProfile">
+        <MappingFragment StoreEntitySet="RolProfile">
+          <ScalarProperty Name="IdProfile" ColumnName="IdProfile" />
+          <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+          <ScalarProperty Name="IdRolProfile" ColumnName="IdRolProfile" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
